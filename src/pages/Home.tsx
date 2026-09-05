@@ -14,7 +14,14 @@ export default function Home() {
             {profile.name}
           </h1>
           <p className="mt-2 text-xl font-medium text-teal-300">{profile.title}</p>
-          <p className="mt-6 text-base leading-relaxed text-slate-400">{profile.summary}</p>
+          <ul className="mt-6 space-y-2.5 text-left text-base leading-relaxed text-slate-400">
+            {profile.summaryBullets.map((bullet) => (
+              <li key={bullet} className="flex gap-2.5">
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-400" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start">
             <Link

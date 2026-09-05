@@ -1,5 +1,5 @@
 import SectionHeading from '../components/SectionHeading'
-import { education, experience, skills } from '../data/resume'
+import { education, experience, profile, skills } from '../data/resume'
 
 export default function Resume() {
   return (
@@ -17,6 +17,18 @@ export default function Resume() {
           Download PDF
         </a>
       </div>
+
+      <section aria-labelledby="profile-heading" className="mb-16">
+        <SectionHeading eyebrow="Overview" title="Profile" />
+        <ul className="space-y-2.5 text-sm leading-relaxed text-slate-400">
+          {profile.summaryBullets.map((bullet) => (
+            <li key={bullet} className="flex gap-2.5">
+              <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-400" />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section aria-labelledby="experience-heading">
         <SectionHeading eyebrow="Career" title="Professional Experience" />
@@ -44,7 +56,7 @@ export default function Resume() {
 
       <section aria-labelledby="education-heading" className="mt-16">
         <SectionHeading eyebrow="Academics" title="Education" />
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className={`grid gap-6 ${education.length > 1 ? 'sm:grid-cols-3' : 'sm:max-w-sm'}`}>
           {education.map((entry) => (
             <div key={entry.degree} className="rounded-lg border border-slate-800 p-5">
               <p className="text-sm text-slate-500">{entry.dates}</p>
